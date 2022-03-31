@@ -1,4 +1,4 @@
-import 'package:shamo/features/chat/data/models/chat_model.dart';
+part of '../../chat.dart';
 
 class ListChatModel {
   List<ChatModel>? chatModels;

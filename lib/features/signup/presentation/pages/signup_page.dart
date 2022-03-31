@@ -10,6 +10,11 @@ class SignUpPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    TextEditingController _nameController = TextEditingController();
+    TextEditingController _userNameController = TextEditingController();
+    TextEditingController _emailController = TextEditingController();
+    TextEditingController _passwordController = TextEditingController();
+
     Widget header() {
       return Container(
         margin: EdgeInsets.only(top: 30),
@@ -65,6 +70,7 @@ class SignUpPage extends StatelessWidget {
                     ),
                     Expanded(
                         child: TextFormField(
+                      controller: _nameController,
                       style: primaryTextStyle,
                       decoration: InputDecoration.collapsed(
                           hintText: "Your Full Name",
@@ -111,6 +117,7 @@ class SignUpPage extends StatelessWidget {
                     ),
                     Expanded(
                         child: TextFormField(
+                      controller: _userNameController,
                       style: primaryTextStyle,
                       decoration: InputDecoration.collapsed(
                           hintText: "Your Username",
@@ -157,6 +164,7 @@ class SignUpPage extends StatelessWidget {
                     ),
                     Expanded(
                         child: TextFormField(
+                      controller: _emailController,
                       style: primaryTextStyle,
                       decoration: InputDecoration.collapsed(
                           hintText: "Your Email Address",
@@ -203,6 +211,7 @@ class SignUpPage extends StatelessWidget {
                     ),
                     Expanded(
                         child: TextFormField(
+                      controller: _passwordController,
                       style: primaryTextStyle,
                       obscureText: true,
                       decoration: InputDecoration.collapsed(
@@ -222,7 +231,7 @@ class SignUpPage extends StatelessWidget {
       return Container(
         height: 50,
         width: double.infinity,
-        margin: EdgeInsets.only(top: 30),
+        margin: EdgeInsets.only(top: 30, bottom: 20),
         child: TextButton(
           style: TextButton.styleFrom(
               backgroundColor: primaryColor,
@@ -287,19 +296,12 @@ class SignUpPage extends StatelessWidget {
                   emailInput(),
                   passwordInput(),
                   signInButton(),
-                  Flexible(
-                    flex: 1,
-                    fit: FlexFit.loose,
-                    child: Container(
-                      height: 50,
-                    ),
-                  ),
-                  footer()
                 ],
               ),
             ),
           ),
         ),
+        bottomNavigationBar: footer(),
       ),
     );
   }

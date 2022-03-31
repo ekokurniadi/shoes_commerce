@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:shamo/core/router/cubit/router_cubit.dart';
-import 'package:shamo/features/home/presentation/pages/home.dart';
-import 'package:shamo/features/login/presentation/pages/login_page.dart';
-import 'package:shamo/features/signup/presentation/pages/signup_page.dart';
-import 'package:shamo/features/splash_screen/presentation/pages/splash_page.dart';
+
+import 'features/signup/presentation/pages/signup_page.dart';
+import 'features/splash_screen/presentation/pages/splash_page.dart';
+
+import 'core/core.dart';
+import 'features/chat/chat.dart';
+import 'features/home/home.dart';
+import 'features/login/login.dart';
 
 class Wrappers extends StatelessWidget {
   const Wrappers({Key? key}) : super(key: key);
@@ -25,6 +28,8 @@ class Wrappers extends StatelessWidget {
             return const SignUpPage();
           } else if (state is OnHomePage) {
             return const HomePage();
+          } else if (state is OnChatDetailPage) {
+            return DetailChat(chatModel: state.chatModel!);
           }
           return Container();
         },

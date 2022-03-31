@@ -1,9 +1,4 @@
-import 'package:flutter/material.dart';
-import 'package:shamo/core/utility/theme_helper.dart';
-import 'package:shamo/features/beranda/presentation/widgets/arrival_product_card.dart';
-import 'package:shamo/features/beranda/presentation/widgets/categories.dart';
-import 'package:shamo/features/beranda/presentation/widgets/popular_product.dart';
-import 'package:shamo/features/beranda/presentation/widgets/title_section.dart';
+part of '../../beranda.dart';
 
 class BerandaPage extends StatelessWidget {
   const BerandaPage({Key? key}) : super(key: key);
@@ -30,55 +25,11 @@ class BerandaPage extends StatelessWidget {
         "product_price": "\$58,67"
       },
     ];
-
-    Widget header() {
-      return Container(
-        margin: EdgeInsets.only(
-          top: 30,
-          left: defaultMargin,
-          right: defaultMargin,
-        ),
-        child: Row(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Expanded(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    "Hallo, Alex",
-                    style: primaryTextStyle.copyWith(
-                      fontSize: 24,
-                      fontWeight: semiBold,
-                    ),
-                  ),
-                  Text(
-                    "@alexkein",
-                    style: subtitleTextStyle.copyWith(
-                      fontSize: 16,
-                    ),
-                  ),
-                ],
-              ),
-            ),
-            Container(
-              width: 54,
-              height: 54,
-              decoration: const BoxDecoration(
-                  shape: BoxShape.circle,
-                  image: DecorationImage(
-                      image: AssetImage("assets/image_profile.png"))),
-            )
-          ],
-        ),
-      );
-    }
-
     return Scaffold(
       backgroundColor: backgroundColor1,
       body: ListView(
         children: [
-          header(),
+          const HeaderBeranda(),
           const Categories(),
           const TitleSection(title: "Popular Product"),
           PopularProductCard(productList: productList),

@@ -6,8 +6,10 @@ abstract class Failures extends Equatable {
 }
 
 class ServerFailures extends Failures {
+  final String? errorMessage;
+  ServerFailures({this.errorMessage});
   @override
-  List<Object?> get props => throw UnimplementedError();
+  List<Object?> get props => [errorMessage];
 }
 
 class LocalFailures extends Failures {

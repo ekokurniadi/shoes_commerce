@@ -16,3 +16,12 @@ class OnSignInPage extends RouterState {}
 class OnSignUpPage extends RouterState {}
 
 class OnHomePage extends RouterState {}
+
+class OnChatDetailPage extends RouterState {
+  final ChatModel? chatModel;
+
+  const OnChatDetailPage({this.chatModel});
+
+  @override
+  List<Object> get props => [chatModel!];
+}

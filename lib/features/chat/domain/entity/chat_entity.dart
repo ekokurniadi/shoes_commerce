@@ -1,4 +1,4 @@
-import 'package:equatable/equatable.dart';
+part of '../../chat.dart';
 
 class ChatEntity extends Equatable {
   final int? chatID;

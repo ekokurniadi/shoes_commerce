@@ -1,16 +1,11 @@
 import 'package:get_it/get_it.dart';
-import 'package:shamo/core/router/cubit/router_cubit.dart';
-import 'package:shamo/core/utility/shared_preferences_helper.dart';
-import 'package:shamo/features/beranda/presentation/cubit/categories_cubit.dart';
-import 'package:shamo/features/chat/data/repositories/chat_repositories_impl.dart';
-import 'package:shamo/features/chat/data/resources/chat_local_data_source.dart';
-import 'package:shamo/features/chat/data/resources/chat_local_data_source_impl.dart';
-import 'package:shamo/features/chat/domain/repositories/chat_repositories.dart';
-import 'package:shamo/features/chat/domain/usecases/get_list_message.dart'
-    as us;
-import 'package:shamo/features/chat/presentation/cubit/chat_cubit.dart';
+import 'package:shamo/features/profile/presentation/cubit/profile_cubit.dart';
 
-import 'package:shamo/features/home/presentation/cubit/bottom_navigation_cubit.dart';
+import 'core/core.dart';
+import 'features/beranda/beranda.dart';
+import 'features/chat/chat.dart';
+import 'features/home/home.dart';
+import 'features/login/login.dart';
 
 final sl = GetIt.instance;
 Future<void> initials() async {
@@ -19,18 +14,32 @@ Future<void> initials() async {
   sl.registerFactory(() => BottomNavigationCubit());
   sl.registerFactory(() => CategoriesCubit());
   sl.registerFactory(() => ChatCubit(getListMessage: sl()));
+  sl.registerFactory(() => LoginCubit(useCaseLogin: sl()));
+  sl.registerFactory(() => ValidatorCubit());
+  sl.registerFactory(() => ProfileCubit());
+
+  // toast helper
+  sl.registerLazySingleton<ToastHelper>(() => ToastHelper());
 
   // shared preferences helper
   sl.registerLazySingleton(() => SharedPreferencesHelper());
 
   // usecases
-  sl.registerLazySingleton(() => us.GetListMessage(chatRepositories: sl()));
+  sl.registerLazySingleton<GetListMessage>(
+      () => GetListMessage(chatRepositories: sl()));
+  sl.registerLazySingleton<UseCaseLogin>(
+      () => UseCaseLogin(loginRepositories: sl()));
 
   // repositories
   sl.registerLazySingleton<ChatRepositories>(
       () => ChatRepositoriesImpl(chatLocalDataSourceImpl: sl()));
 
+  sl.registerLazySingleton<LoginRepositories>(
+      () => LoginUserRepositoriesImpl(loginNetworkDataSource: sl()));
+
   // datasource
   sl.registerLazySingleton<ChatLocalDataSource>(
       () => ChatLocalDataSourceImpl());
+  sl.registerLazySingleton<LoginNetworkDataSource>(
+      () => LoginNetworkDataSourceImpl());
 }

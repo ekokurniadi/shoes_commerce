@@ -1,4 +1,4 @@
-import 'package:shamo/features/chat/domain/entity/chat_entity.dart';
+part of '../../chat.dart';
 
 class ChatModel extends ChatEntity {
   const ChatModel({

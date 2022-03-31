@@ -1,11 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
-import 'package:shamo/app.dart';
+import 'app.dart';
+import 'core/core.dart';
 import 'injection_container.dart' as di;
 
 void main() async {
   WidgetsBinding widgetsBinding = WidgetsFlutterBinding.ensureInitialized();
   FlutterNativeSplash.preserve(widgetsBinding: widgetsBinding);
   await di.initials();
+  DioHelper.initDio(ConstantHelper.BASE_URL);
+  DioHelper.setDioInterceptor(ConstantHelper.BASE_URL);
   runApp(const App());
 }

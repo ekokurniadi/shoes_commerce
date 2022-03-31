@@ -1,5 +1,4 @@
-import 'package:flutter/material.dart';
-import 'package:shamo/core/utility/theme_helper.dart';
+part of '../../beranda.dart';
 
 class PopularProductCard extends StatelessWidget {
   final List<Map<String, dynamic>>? productList;

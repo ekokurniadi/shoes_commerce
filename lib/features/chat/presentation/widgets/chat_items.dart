@@ -1,6 +1,4 @@
-import 'package:flutter/material.dart';
-import 'package:shamo/core/utility/theme_helper.dart';
-import 'package:shamo/features/chat/data/models/chat_model.dart';
+part of '../../chat.dart';
 
 class ChatItems extends StatelessWidget {
   final ChatModel? message;

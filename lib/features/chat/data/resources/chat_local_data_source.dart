@@ -1,4 +1,4 @@
-import 'package:shamo/features/chat/data/models/list_chat_model.dart';
+part of '../../chat.dart';
 
 abstract class ChatLocalDataSource {
   Future<ListChatModel> getLocalDataChat();

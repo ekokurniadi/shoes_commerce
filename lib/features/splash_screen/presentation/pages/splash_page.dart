@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:shamo/core/utility/theme_helper.dart';
+
+import '../../../../core/core.dart';
 
 class SplashPage extends StatelessWidget {
   const SplashPage({Key? key}) : super(key: key);

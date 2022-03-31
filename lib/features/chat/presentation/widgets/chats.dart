@@ -1,6 +1,4 @@
-import 'package:flutter/material.dart';
-import 'package:shamo/features/chat/data/models/list_chat_model.dart';
-import 'package:shamo/features/chat/presentation/widgets/chat_items.dart';
+part of '../../chat.dart';
 
 class Chats extends StatelessWidget {
   final ListChatModel? messages;
@@ -14,8 +12,14 @@ class Chats extends StatelessWidget {
       child: ListView.builder(
           itemCount: messages!.chatModels!.length,
           itemBuilder: (context, index) {
-            return ChatItems(
-              message: messages!.chatModels![index],
+            return GestureDetector(
+              onTap: () {
+                BlocProvider.of<RouterCubit>(context)
+                    .onChatDetailPage(chatModel: messages!.chatModels![index]);
+              },
+              child: ChatItems(
+                message: messages!.chatModels![index],
+              ),
             );
           }),
     ));

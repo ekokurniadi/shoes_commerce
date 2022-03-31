@@ -1,7 +1,4 @@
-import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:shamo/core/utility/theme_helper.dart';
-import 'package:shamo/features/beranda/presentation/cubit/categories_cubit.dart';
+part of '../../beranda.dart';
 
 class Categories extends StatelessWidget {
   const Categories({Key? key}) : super(key: key);

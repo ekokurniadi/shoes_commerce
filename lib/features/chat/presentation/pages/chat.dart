@@ -1,12 +1,4 @@
-import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_spinkit/flutter_spinkit.dart';
-
-import 'package:shamo/core/utility/theme_helper.dart';
-import 'package:shamo/features/chat/data/models/list_chat_model.dart';
-import 'package:shamo/features/chat/presentation/cubit/chat_cubit.dart';
-import 'package:shamo/features/chat/presentation/widgets/chats.dart';
-import 'package:shamo/features/chat/presentation/widgets/empty_chat.dart';
+part of '../../chat.dart';
 
 class ChatPage extends StatelessWidget {
   const ChatPage({Key? key}) : super(key: key);
@@ -32,7 +24,6 @@ class ChatPage extends StatelessWidget {
       body: BlocBuilder<ChatCubit, ChatState>(
         builder: (context, state) {
           if (state is ChatInitial) {
-            BlocProvider.of<ChatCubit>(context).getList();
             return Center(
               child: SpinKitThreeBounce(color: secondaryColor, size: 20),
             );

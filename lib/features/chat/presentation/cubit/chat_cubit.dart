@@ -1,7 +1,7 @@
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
-import 'package:shamo/features/chat/data/models/list_chat_model.dart';
-import 'package:shamo/features/chat/domain/usecases/get_list_message.dart';
+
+import '../../chat.dart';
 
 part 'chat_state.dart';
 
@@ -13,7 +13,7 @@ class ChatCubit extends Cubit<ChatState> {
     emit(ChatLoadingState());
 
     final result = await getListMessage();
-    Future.delayed(const Duration(seconds: 2), () {
+    Future.delayed(const Duration(seconds: 1), () {
       result.fold((failed) => emit(ChatErrorState()),
           (response) => emit(GetListMessageState(listChatModel: response)));
     });

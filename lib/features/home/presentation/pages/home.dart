@@ -1,12 +1,4 @@
-import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:shamo/core/utility/theme_helper.dart';
-import 'package:shamo/features/beranda/presentation/pages/beranda.dart';
-import 'package:shamo/features/cart/presentation/pages/cart.dart';
-import 'package:shamo/features/chat/presentation/pages/chat.dart';
-import 'package:shamo/features/home/presentation/cubit/bottom_navigation_cubit.dart';
-import 'package:shamo/features/profile/presentation/pages/profile.dart';
-import 'package:shamo/features/wishlist/presentation/pages/wishlist.dart';
+part of '../../home.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -118,8 +110,10 @@ class HomePage extends StatelessWidget {
       return BlocBuilder<BottomNavigationCubit, int>(
         builder: (context, state) {
           if (state == 0) {
+            BlocProvider.of<ProfileCubit>(context).getUserProfile();
             return const BerandaPage();
           } else if (state == 1) {
+            BlocProvider.of<ChatCubit>(context).getList();
             return const ChatPage();
           } else if (state == 2) {
             return const WishListPage();
@@ -133,6 +127,7 @@ class HomePage extends StatelessWidget {
     }
 
     return Scaffold(
+      extendBody: true,
       backgroundColor: backgroundColor1,
       floatingActionButton: cartButton(),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
