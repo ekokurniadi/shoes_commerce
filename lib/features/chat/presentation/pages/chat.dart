@@ -5,6 +5,8 @@ class ChatPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    BlocProvider.of<ChatCubit>(context).getList();
+
     ListChatModel listChatModel = ListChatModel();
     return Scaffold(
       backgroundColor: backgroundColor3,

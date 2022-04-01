@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:shamo/features/product/product.dart';
 import 'package:shamo/features/profile/presentation/cubit/profile_cubit.dart';
+import 'package:shamo/features/signup/presentation/cubit/signup_cubit.dart';
 
 import 'core/core.dart';
 import 'features/beranda/presentation/cubit/categories_cubit.dart';
@@ -43,6 +45,12 @@ class App extends StatelessWidget {
           ),
           BlocProvider(
             create: (_) => sl<ProfileCubit>(),
+          ),
+          BlocProvider(
+            create: (_) => sl<SignupCubit>(),
+          ),
+          BlocProvider(
+            create: (_) => sl<ProductCubit>(),
           ),
         ],
         child: const Wrappers(),

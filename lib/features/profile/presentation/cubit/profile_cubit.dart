@@ -18,7 +18,6 @@ class ProfileCubit extends Cubit<ProfileState> {
       Future.delayed(const Duration(seconds: 2), () {
         emit(ProfileSuccess(userModel: value));
       });
-      return value;
     });
   }
 }

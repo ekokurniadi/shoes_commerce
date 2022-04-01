@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import 'features/signup/presentation/pages/signup_page.dart';
 import 'features/splash_screen/presentation/pages/splash_page.dart';
 
 import 'core/core.dart';
 import 'features/chat/chat.dart';
 import 'features/home/home.dart';
 import 'features/login/login.dart';
+import 'features/signup/signup.dart';
 
 class Wrappers extends StatelessWidget {
   const Wrappers({Key? key}) : super(key: key);

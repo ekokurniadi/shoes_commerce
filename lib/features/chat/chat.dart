@@ -1,15 +1,16 @@
+export './presentation/cubit/chat_cubit.dart';
+
 import 'package:dartz/dartz.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
+
 import '../../core/core.dart';
 import '../../core/error/failures.dart';
 import 'data/resources/chat_data.dart';
 import 'presentation/cubit/chat_cubit.dart';
 import '../home/presentation/cubit/bottom_navigation_cubit.dart';
-
-export './presentation/cubit/chat_cubit.dart';
 
 part './data/models/chat_model.dart';
 part './data/models/list_chat_model.dart';

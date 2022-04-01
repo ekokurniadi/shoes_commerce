@@ -110,10 +110,8 @@ class HomePage extends StatelessWidget {
       return BlocBuilder<BottomNavigationCubit, int>(
         builder: (context, state) {
           if (state == 0) {
-            BlocProvider.of<ProfileCubit>(context).getUserProfile();
             return const BerandaPage();
           } else if (state == 1) {
-            BlocProvider.of<ChatCubit>(context).getList();
             return const ChatPage();
           } else if (state == 2) {
             return const WishListPage();

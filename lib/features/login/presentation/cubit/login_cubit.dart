@@ -20,14 +20,22 @@ class LoginCubit extends Cubit<LoginState> {
     emit(LoginOnProcess());
     if (email.isEmpty || password.isEmpty) {
       emit(LoginError(
-          errorMessage: ServerFailures(
-              errorMessage: "Silahkan cek kembali inputan anda")));
+        errorMessage: ServerFailures(
+          errorMessage: "Silahkan cek kembali inputan anda",
+        ),
+      ));
+      Future.delayed(const Duration(seconds: 1), () {
+        emit(LoginInitial());
+      });
       return;
     }
     final result = await useCaseLogin.call(email, password);
 
-    result.fold((failures) {
+    result.fold((failures) async {
       emit(LoginError(errorMessage: failures));
+      Future.delayed(const Duration(seconds: 1), () {
+        emit(LoginInitial());
+      });
     }, (response) async {
       await _sharedPreferencesHelper.setUserPreferences(response);
       emit(LoginSuccess(userModel: response));
@@ -39,7 +47,6 @@ class LoginCubit extends Cubit<LoginState> {
     final SharedPreferencesHelper _sharedPreferencesHelper =
         sl<SharedPreferencesHelper>();
     emit(LogOutOnProcess());
-
     await _sharedPreferencesHelper.resetUserPreferences().then((value) {
       emit(LogOutSuccess());
       BlocProvider.of<RouterCubit>(context).onSignInPage();

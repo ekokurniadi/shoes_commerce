@@ -2,12 +2,12 @@ import '../../domain/entity/user_entity.dart';
 
 class UserModel extends UserEntity {
   const UserModel({
-    required int id,
-    required String name,
-    required String email,
-    required String userName,
-    required String profilePhotoUrl,
-    required String token,
+    required int? id,
+    required String? name,
+    required String? email,
+    required String? userName,
+    required String? profilePhotoUrl,
+    required String? token,
   }) : super(
           id: id,
           name: name,

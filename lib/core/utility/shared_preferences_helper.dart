@@ -57,21 +57,24 @@ class SharedPreferencesHelper {
   }
 
   Future<UserModel> getUserPreferences() async {
-    int? userID = await getUserID();
-    String? name = await getNameUser();
-    String? email = await getEmailUser();
-    String? userName = await getUserName();
-    String? profilePicture = await getProfilePicture();
-    String? token = await getAccessToken();
+    final SharedPreferences _sharedPreferences =
+        await SharedPreferences.getInstance();
+    int? userID = _sharedPreferences.getInt("id");
+    String? name = _sharedPreferences.getString("name");
+    String? email = _sharedPreferences.getString("email");
+    String? userName = _sharedPreferences.getString("user_name");
+    String? profilePicture = _sharedPreferences.getString("profile_picture");
+    String? token = _sharedPreferences.getString("token");
 
     final UserModel userModel = UserModel(
-      id: userID!,
-      name: name!,
+      id: userID,
+      name: name,
       email: email ?? "email@gmail.com",
-      userName: userName!,
-      profilePhotoUrl: profilePicture!,
-      token: token!,
+      userName: userName,
+      profilePhotoUrl: profilePicture,
+      token: token,
     );
+
     return userModel;
   }
 

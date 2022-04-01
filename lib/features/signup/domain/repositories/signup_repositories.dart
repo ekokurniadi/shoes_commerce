@@ -1,6 +1,10 @@
 part of '../../signup.dart';
 
 abstract class SignUpRepositories {
-  Future<Either<Failures, UserModel>> signUpUser(
-      String name, String userName, String email, String password);
+  Future<Either<Failures, UserModel>> signUpUser({
+    required String name,
+    required String userName,
+    required String email,
+    required String password,
+  });
 }

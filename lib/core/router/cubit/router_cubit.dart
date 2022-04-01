@@ -17,6 +17,7 @@ class RouterCubit extends Cubit<RouterState> {
     FlutterNativeSplash.remove();
     emit(OnSplashPage());
     int? userID = await _sharedPreferencesHelper.getUserID();
+    await _sharedPreferencesHelper.getUserPreferences();
     if (userID == null) {
       Future.delayed(Duration(seconds: 3), () {
         emit(OnSignInPage());

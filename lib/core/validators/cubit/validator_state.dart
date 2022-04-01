@@ -50,9 +50,25 @@ class IsGreaterThanEight extends ValidatorState {
 }
 
 class IsPasswordValid extends ValidatorState {
-  final List<Map<String, dynamic>>? result;
+  final List<String>? result;
   const IsPasswordValid({this.result});
 
   @override
   List<Object> get props => [result!];
+}
+
+class NameIsEmpty extends ValidatorState {
+  final String? message;
+  const NameIsEmpty({this.message});
+
+  @override
+  List<Object> get props => [message!];
+}
+
+class UserNameIsEmpty extends ValidatorState {
+  final String? message;
+  const UserNameIsEmpty({this.message});
+
+  @override
+  List<Object> get props => [message!];
 }

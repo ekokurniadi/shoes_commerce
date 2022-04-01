@@ -14,7 +14,7 @@ class LoginPage extends StatelessWidget {
     bool isPasswordValid = true;
     final TextEditingController _email = TextEditingController();
     final TextEditingController _password = TextEditingController();
-    List<Map<String, dynamic>> resultPassword = [];
+    List<String> resultPassword = [];
     Widget header() {
       return Container(
         margin: const EdgeInsets.only(top: 30),
@@ -162,7 +162,6 @@ class LoginPage extends StatelessWidget {
             BlocBuilder<ValidatorCubit, ValidatorState>(
                 builder: (context, state) {
               if (state is IsPasswordValid) {
-                resultPassword = state.result!;
                 return Visibility(
                   visible: resultPassword.isNotEmpty,
                   child: Container(
@@ -175,7 +174,7 @@ class LoginPage extends StatelessWidget {
                         itemBuilder: (context, index) {
                           return SizedBox(
                             child: Text(
-                              resultPassword[index]['message'],
+                              resultPassword[index],
                               style: priceTextStyle.copyWith(
                                 color: secondaryColor,
                                 fontSize: 12,
@@ -195,27 +194,51 @@ class LoginPage extends StatelessWidget {
     }
 
     Widget signInButton() {
-      return Container(
-        height: 50,
-        width: double.infinity,
-        margin: const EdgeInsets.only(top: 20),
-        child: TextButton(
-          style: TextButton.styleFrom(
-              backgroundColor: primaryColor,
-              shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(12))),
-          onPressed: () {
-            BlocProvider.of<LoginCubit>(context)
-                .loginUser(_email.text, _password.text);
-          },
-          child: Text(
-            "Sign In",
-            style: primaryTextStyle.copyWith(
-              fontSize: 16,
-              fontWeight: medium,
+      return BlocBuilder<ValidatorCubit, ValidatorState>(
+        builder: (context, state) {
+          if (state is ValidatorInitial) {
+            emailValidationMessage = "";
+            resultPassword = [];
+          } else if (state is IsEmailValid) {
+            emailValidationMessage = state.message!;
+            resultPassword = [];
+          } else if (state is IsPasswordValid) {
+            resultPassword = state.result!;
+          } else {
+            emailValidationMessage = "";
+            resultPassword = [];
+          }
+          return Container(
+            height: 50,
+            width: double.infinity,
+            margin: const EdgeInsets.only(top: 20),
+            child: TextButton(
+              style: TextButton.styleFrom(
+                  backgroundColor: (resultPassword.isEmpty &&
+                          emailValidationMessage.isEmpty &&
+                          (_email.text.isNotEmpty && _password.text.isNotEmpty))
+                      ? primaryColor
+                      : secondaryTextColor,
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(12))),
+              onPressed: (resultPassword.isEmpty &&
+                      emailValidationMessage.isEmpty &&
+                      (_email.text.isNotEmpty && _password.text.isNotEmpty))
+                  ? () {
+                      BlocProvider.of<LoginCubit>(context)
+                          .loginUser(_email.text, _password.text);
+                    }
+                  : () {},
+              child: Text(
+                "Sign In",
+                style: primaryTextStyle.copyWith(
+                  fontSize: 16,
+                  fontWeight: medium,
+                ),
+              ),
             ),
-          ),
-        ),
+          );
+        },
       );
     }
 

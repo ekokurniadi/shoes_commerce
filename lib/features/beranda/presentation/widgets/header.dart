@@ -98,7 +98,10 @@ class HeaderBeranda extends StatelessWidget {
                     decoration: BoxDecoration(
                       shape: BoxShape.circle,
                       image: DecorationImage(
-                        image: NetworkImage(state.userModel.profilePhotoUrl!),
+                        fit: BoxFit.cover,
+                        image: NetworkImage(
+                          state.userModel.profilePhotoUrl!,
+                        ),
                       ),
                     ),
                   ),

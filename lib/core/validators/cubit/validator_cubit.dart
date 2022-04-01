@@ -22,53 +22,42 @@ class ValidatorCubit extends Cubit<ValidatorState> {
     RegExp haveSymbol = RegExp(r'^(?=.*?[!@#\$&*~])');
     RegExp haveNumber = RegExp(r'^(?=.*?[0-9])');
     RegExp greaterThanEight = RegExp(r'^.{8,}$');
+    List<String> isPasswordValid = [];
 
-    Map<String, bool> result = {
-      "uppercase": upperCase.hasMatch(password),
-      "lowercase": lowerCase.hasMatch(password),
-      "number": haveNumber.hasMatch(password),
-      "symbol": haveSymbol.hasMatch(password),
-      "eight": greaterThanEight.hasMatch(password)
-    };
-    List<Map<String, dynamic>> validationResult = [];
     if (!upperCase.hasMatch(password)) {
-      validationResult.add({
-        "name": "uppercase",
-        "value": result["uppercase"],
-        "message": "Password harus mengandung huruf besar"
-      });
+      isPasswordValid.add("Password harus mengandung huruf besar");
     } else if (!lowerCase.hasMatch(password)) {
-      validationResult.add({
-        "name": "lowercase",
-        "value": result["lowercase"],
-        "message": "Password harus mengandung huruf kecil"
-      });
+      isPasswordValid.add("Password harus mengandung huruf kecil");
     } else if (!haveNumber.hasMatch(password)) {
-      validationResult.add({
-        "name": "number",
-        "value": result["number"],
-        "message": "Password harus mengandung angka"
-      });
+      isPasswordValid.add("Password harus mengandung angka");
     } else if (!haveSymbol.hasMatch(password)) {
-      validationResult.add({
-        "name": "symbol",
-        "value": result["symbol"],
-        "message": "Password harus mengandung simbol"
-      });
+      isPasswordValid.add("Password harus mengandung simbol");
     } else if (!greaterThanEight.hasMatch(password)) {
-      validationResult.add({
-        "name": "eight",
-        "value": result["eight"],
-        "message": "Password harus lebih dari 8 karakter"
-      });
+      isPasswordValid.add("Password minimal 8 karakter");
     } else {
-      validationResult.clear();
+      isPasswordValid.clear();
     }
 
-    emit(IsPasswordValid(result: validationResult));
+    emit(IsPasswordValid(result: isPasswordValid));
   }
 
   void resetValidator() async {
     emit(ValidatorInitial());
+  }
+
+  void validateNameInput(String name) async {
+    if (name == "") {
+      emit(const NameIsEmpty(message: "Nama tidak boleh kosong"));
+    } else {
+      emit(const NameIsEmpty(message: ""));
+    }
+  }
+
+  void validateUserNameInput(String username) {
+    if (username == "") {
+      emit(const UserNameIsEmpty(message: "Username tidak boleh kosong"));
+    } else {
+      emit(const UserNameIsEmpty(message: ""));
+    }
   }
 }
