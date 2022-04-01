@@ -10,6 +10,6 @@ class ProductRepositoriesImpl extends ProductRepositories {
 
   @override
   Future<Either<Failures, ListProductModel>> getPopularProduct(int page) async {
-    return await productRemoteDataSource.getProduct(page);
+    return await productRemoteDataSource.getPopularProduct(page);
   }
 }
