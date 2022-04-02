@@ -6,10 +6,10 @@ class PopularProductCard extends StatelessWidget {
   Widget build(BuildContext context) {
     List<ProductModel> listProductModel = [];
 
-    return BlocBuilder<ProductCubit, ProductState>(
+    return BlocBuilder<PopularProductCubit, PopularProductState>(
       builder: (context, state) {
         if (state is PopularProductInitial) {
-          BlocProvider.of<ProductCubit>(context).getPopularProduct();
+          BlocProvider.of<PopularProductCubit>(context).getPopularProduct();
           return const PopularProductShimmer();
         } else if (state is OnPopularProductLoaded) {
           for (var element in state.productModel!.productModel!) {
@@ -27,7 +27,7 @@ class PopularProductCard extends StatelessWidget {
               itemBuilder: (context, index) {
                 return Container(
                   width: 215,
-                  height: 274,
+                  height: 278,
                   margin: EdgeInsets.only(
                       right: defaultMargin,
                       left: index == 0 ? defaultMargin : 0),
@@ -76,7 +76,7 @@ class PopularProductCard extends StatelessWidget {
                               height: 6,
                             ),
                             Text(
-                              listProductModel[index].price!.toString(),
+                              "\$${listProductModel[index].price!.toString()}",
                               style: priceTextStyle.copyWith(
                                 fontSize: 14,
                                 fontWeight: medium,

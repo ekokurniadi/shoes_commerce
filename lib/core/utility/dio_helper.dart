@@ -27,7 +27,7 @@ class DioHelper {
     dio!.interceptors.add(
       InterceptorsWrapper(
         onResponse: (response, responseInterceptorHandler) {
-          print("${response.statusCode} | ${response.data}");
+          print("${response.statusCode} | ${response.data.toString()}");
           return responseInterceptorHandler.next(response);
         },
         onRequest: (request, requestInterceptorHandler) {

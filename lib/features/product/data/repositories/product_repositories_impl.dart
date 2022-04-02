@@ -4,8 +4,9 @@ class ProductRepositoriesImpl extends ProductRepositories {
   final ProductRemoteDataSource productRemoteDataSource;
   ProductRepositoriesImpl({required this.productRemoteDataSource});
   @override
-  Future<Either<Failures, ListProductModel>> getProduct(int page) async {
-    return await productRemoteDataSource.getProduct(page);
+  Future<Either<Failures, ListProductModel>> getProduct(
+      int page, int? category) async {
+    return await productRemoteDataSource.getProduct(page, category);
   }
 
   @override

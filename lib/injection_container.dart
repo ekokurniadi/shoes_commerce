@@ -1,7 +1,7 @@
 import 'package:get_it/get_it.dart';
 
 import 'core/core.dart';
-import 'features/beranda/beranda.dart';
+import 'features/category/category.dart';
 import 'features/chat/chat.dart';
 import 'features/home/home.dart';
 import 'features/login/login.dart';
@@ -17,8 +17,6 @@ Future<void> initials() async {
 
   sl.registerFactory(() => BottomNavigationCubit());
 
-  sl.registerFactory(() => CategoriesCubit());
-
   sl.registerFactory(() => ChatCubit(getListMessage: sl()));
 
   sl.registerFactory(() => LoginCubit(useCaseLogin: sl()));
@@ -29,10 +27,12 @@ Future<void> initials() async {
 
   sl.registerFactory(() => ProfileCubit());
 
-  sl.registerFactory(() => ProductCubit(
-        getProductUsecase: sl(),
-        getPopularProductUsecase: sl(),
-      ));
+  sl.registerLazySingleton(() => ProductCubit(getProductUsecase: sl()));
+
+  sl.registerFactory(() => PopularProductCubit(getPopularProductUsecase: sl()));
+
+  sl.registerFactory(() => CategoryCubit(getCategoryUseCases: sl()));
+
   // toast helper
   sl.registerLazySingleton(() => ToastHelper());
 
@@ -48,8 +48,12 @@ Future<void> initials() async {
 
   sl.registerLazySingleton(
       () => GetProductUsecase(productRemoteDataSource: sl()));
+
   sl.registerLazySingleton(
       () => GetPopularProductUsecase(productRemoteDataSource: sl()));
+
+  sl.registerLazySingleton(
+      () => GetCategoryUseCases(categoryRemoteDataSource: sl()));
 
   // repositories
   sl.registerLazySingleton<ChatRepositories>(
@@ -61,8 +65,11 @@ Future<void> initials() async {
   sl.registerLazySingleton<SignUpRepositories>(
       () => SignUpRepositoriesImpl(signUpRemoteDataSource: sl()));
 
-  sl.registerFactory<ProductRepositories>(
+  sl.registerLazySingleton<ProductRepositories>(
       () => ProductRepositoriesImpl(productRemoteDataSource: sl()));
+
+  sl.registerLazySingleton<CategoryRepositories>(
+      () => CategoryRepositoriesImpl(categoryRemoteDataSource: sl()));
 
   // datasource
   sl.registerLazySingleton<ChatLocalDataSource>(
@@ -77,7 +84,10 @@ Future<void> initials() async {
     () => SignUpRemoteDataSourceImpl(),
   );
 
-  sl.registerFactory<ProductRemoteDataSource>(
+  sl.registerLazySingleton<ProductRemoteDataSource>(
     () => ProductRemoteDataSourceImpl(),
   );
+
+  sl.registerLazySingleton<CategoryRemoteDataSource>(
+      () => CategoryRemoteDataSourceImpl());
 }

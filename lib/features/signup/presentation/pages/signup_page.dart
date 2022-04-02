@@ -398,7 +398,7 @@ class SignUpPage extends StatelessWidget {
                     }
                   : () {},
               child: Text(
-                "Sign In",
+                "Sign Un",
                 style: primaryTextStyle.copyWith(
                   fontSize: 16,
                   fontWeight: medium,

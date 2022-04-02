@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:shamo/features/product/product.dart';
-import 'package:shamo/features/profile/presentation/cubit/profile_cubit.dart';
-import 'package:shamo/features/signup/presentation/cubit/signup_cubit.dart';
 
 import 'core/core.dart';
-import 'features/beranda/presentation/cubit/categories_cubit.dart';
+import 'features/category/category.dart';
 import 'features/chat/presentation/cubit/chat_cubit.dart';
 import 'features/home/presentation/cubit/bottom_navigation_cubit.dart';
 import 'features/login/login.dart';
+import 'features/product/product.dart';
+import 'features/profile/presentation/cubit/profile_cubit.dart';
+import 'features/signup/presentation/cubit/signup_cubit.dart';
 import 'injection_container.dart';
 import 'wrappers.dart';
 
@@ -32,9 +32,6 @@ class App extends StatelessWidget {
             create: (_) => sl<BottomNavigationCubit>(),
           ),
           BlocProvider(
-            create: (_) => sl<CategoriesCubit>(),
-          ),
-          BlocProvider(
             create: (_) => sl<ChatCubit>(),
           ),
           BlocProvider(
@@ -50,7 +47,15 @@ class App extends StatelessWidget {
             create: (_) => sl<SignupCubit>(),
           ),
           BlocProvider(
+            lazy: false,
             create: (_) => sl<ProductCubit>(),
+          ),
+          BlocProvider(
+            lazy: false,
+            create: (_) => sl<CategoryCubit>(),
+          ),
+          BlocProvider(
+            create: (_) => sl<PopularProductCubit>(),
           ),
         ],
         child: const Wrappers(),

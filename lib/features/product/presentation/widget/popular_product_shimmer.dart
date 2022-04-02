@@ -14,7 +14,7 @@ class PopularProductShimmer extends StatelessWidget {
           itemBuilder: (context, index) {
             return Container(
               width: 215,
-              height: 278,
+              height: 274,
               margin: EdgeInsets.only(
                   right: defaultMargin, left: index == 0 ? defaultMargin : 0),
               decoration: BoxDecoration(
