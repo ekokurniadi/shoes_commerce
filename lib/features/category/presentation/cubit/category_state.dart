@@ -23,7 +23,7 @@ class OnCategoriesChanges extends CategoryState {
   const OnCategoriesChanges({this.index, this.category});
 
   @override
-  List<Object> get props => [index!, category!];
+  List<Object> get props => [index!, category ?? 0];
 }
 
 class OnCategoryLoaded extends CategoryState {

@@ -4,7 +4,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'core/core.dart';
 import 'features/category/category.dart';
 import 'features/chat/presentation/cubit/chat_cubit.dart';
-import 'features/home/presentation/cubit/bottom_navigation_cubit.dart';
+
+import 'features/home/home.dart';
 import 'features/login/login.dart';
 import 'features/product/product.dart';
 import 'features/profile/presentation/cubit/profile_cubit.dart';
@@ -55,6 +56,7 @@ class App extends StatelessWidget {
             create: (_) => sl<CategoryCubit>(),
           ),
           BlocProvider(
+            lazy: false,
             create: (_) => sl<PopularProductCubit>(),
           ),
         ],

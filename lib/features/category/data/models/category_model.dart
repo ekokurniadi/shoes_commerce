@@ -1,7 +1,7 @@
 part of '../../category.dart';
 
 class CategoryModel extends CategoryEntity {
-  const CategoryModel({required int id, required String name})
+  const CategoryModel({required int? id, required String name})
       : super(id: id, name: name);
 
   factory CategoryModel.fromJson(Map<String, dynamic> json) {

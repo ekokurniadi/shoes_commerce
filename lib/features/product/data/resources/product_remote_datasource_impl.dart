@@ -6,11 +6,12 @@ class ProductRemoteDataSourceImpl extends ProductRemoteDataSource {
       int page, int? category) async {
     ListProductModel listProductModel;
     String url = "/products?page=$page";
+    category == 0 ? null : category;
     try {
       Response response = await DioHelper.dio!.get(
         ConstantHelper.BASE_URL +
             url +
-            (category != null ? '&categories=$category' : ''),
+            (category != null || category != 0 ? '&categories=$category' : ''),
       );
       listProductModel =
           ListProductModel.fromJson(response.data['data']['data']);

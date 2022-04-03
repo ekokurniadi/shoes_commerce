@@ -22,12 +22,18 @@ class BerandaPage extends StatelessWidget {
               if (state is OnCategoriesChanges) {
                 category = state.category!;
               }
-              return Container();
+              return PopularProduct(category: category);
             },
           ),
-          PopularProduct(category: category),
           const TitleSection(title: "New Arrivals"),
-          ArrivalProduct(category: category),
+          BlocBuilder<CategoryCubit, CategoryState>(
+            builder: (context, state) {
+              if (state is OnCategoriesChanges) {
+                category = state.category!;
+              }
+              return ArrivalProduct(category: category);
+            },
+          ),
         ],
       ),
     );

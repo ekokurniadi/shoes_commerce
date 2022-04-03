@@ -19,8 +19,8 @@ class PopularProduct extends StatelessWidget {
           }
           if (listProductModel.isEmpty) {
             return Container(
+              width: MediaQuery.of(context).size.width,
               margin: const EdgeInsets.only(top: 14),
-              height: 78,
               child: const EmptyProduct(),
             );
           }
@@ -31,14 +31,15 @@ class PopularProduct extends StatelessWidget {
           margin: const EdgeInsets.only(top: 14),
           height: 278,
           child: ListView.builder(
-              scrollDirection: Axis.horizontal,
-              itemCount: listProductModel.length,
-              itemBuilder: (context, index) {
-                return PopularProductCard(
-                  index: index,
-                  productModel: listProductModel[index],
-                );
-              }),
+            scrollDirection: Axis.horizontal,
+            itemCount: listProductModel.length,
+            itemBuilder: (context, index) {
+              return PopularProductCard(
+                index: index,
+                productModel: listProductModel[index],
+              );
+            },
+          ),
         );
       },
     );

@@ -1,5 +1,5 @@
 class ChatData {
-  static const obj = [
+  static const List<Map<String, dynamic>> obj = [
     {
       "id": 1,
       "image": "assets/image_shop_logo.png",

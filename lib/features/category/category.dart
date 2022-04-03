@@ -3,6 +3,7 @@ import 'package:dio/dio.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:shimmer/shimmer.dart';
 import '../product/presentation/cubit/popular_product/popular_product_cubit.dart';
 import '../product/presentation/cubit/product_cubit/product_cubit.dart';
 
@@ -22,3 +23,5 @@ part './domain/usecases/get_categories_usecases.dart';
 part './domain/repositories/category_repositories.dart';
 part './presentation/pages/categories.dart';
 part './presentation/widgets/category_item.dart';
+part './presentation/widgets/category_item_shimmer.dart';
+part './presentation/widgets/category_shimmer.dart';

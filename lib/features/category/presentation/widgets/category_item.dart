@@ -3,12 +3,12 @@ part of '../../category.dart';
 class CategoryItem extends StatelessWidget {
   final int index;
   final CategoryModel categoryModel;
-  final List<CategoryModel> items;
+  final int itemsLength;
   const CategoryItem({
     Key? key,
     required this.index,
     required this.categoryModel,
-    required this.items,
+    required this.itemsLength,
   }) : super(key: key);
 
   @override
@@ -20,19 +20,20 @@ class CategoryItem extends StatelessWidget {
           categoriesIndex = state.index!;
         }
         return Container(
-          margin: index == items.length - 1
+          margin: index == itemsLength - 1
               ? EdgeInsets.only(right: defaultMargin)
               : index == 0
                   ? EdgeInsets.only(left: defaultMargin, right: 16)
                   : const EdgeInsets.only(right: 16),
           padding: const EdgeInsets.symmetric(horizontal: 12),
           decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(12),
-              color: index == categoriesIndex ? primaryColor : transparentColor,
-              border: Border.all(
-                  color: index == categoriesIndex
-                      ? transparentColor
-                      : subtitleColor)),
+            borderRadius: BorderRadius.circular(12),
+            color: index == categoriesIndex ? primaryColor : transparentColor,
+            border: Border.all(
+              color:
+                  index == categoriesIndex ? transparentColor : subtitleColor,
+            ),
+          ),
           child: Center(
             child: Text(
               categoryModel.name!,

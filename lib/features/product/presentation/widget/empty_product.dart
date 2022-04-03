@@ -5,9 +5,9 @@ class EmptyProduct extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
+    return Container(
       width: double.infinity,
-      height: 278,
+      margin: EdgeInsets.symmetric(horizontal: defaultMargin),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         mainAxisAlignment: MainAxisAlignment.center,
@@ -15,11 +15,14 @@ class EmptyProduct extends StatelessWidget {
           const SizedBox(
             height: 20,
           ),
-          Text(
-            "Sorry, we dont find any products for this category\nPlease try with a other category",
-            textAlign: TextAlign.center,
-            style: secondaryTextStyle.copyWith(
-              fontWeight: medium,
+          SizedBox(
+            child: Text(
+              "Sorry, we don't find any products\nfor this category\nPlease try with another category",
+              textAlign: TextAlign.center,
+              style: secondaryTextStyle.copyWith(
+                fontWeight: medium,
+                fontSize: 13,
+              ),
             ),
           ),
         ],
