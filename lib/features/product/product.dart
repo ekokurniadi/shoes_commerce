@@ -32,3 +32,5 @@ part 'presentation/pages/popular_product.dart';
 part 'presentation/widget/popular_product_shimmer.dart';
 part 'presentation/widget/arrival_product_shimmer.dart';
 part 'presentation/widget/empty_product.dart';
+part 'presentation/widget/popular_product_card.dart';
+part 'presentation/widget/arrival_product_card.dart';

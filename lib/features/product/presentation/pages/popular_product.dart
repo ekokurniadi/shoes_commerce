@@ -1,8 +1,8 @@
 part of '../../product.dart';
 
-class PopularProductCard extends StatelessWidget {
+class PopularProduct extends StatelessWidget {
   final int? category;
-  const PopularProductCard({Key? key, this.category}) : super(key: key);
+  const PopularProduct({Key? key, this.category}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     List<ProductModel> listProductModel = [];
@@ -34,68 +34,9 @@ class PopularProductCard extends StatelessWidget {
               scrollDirection: Axis.horizontal,
               itemCount: listProductModel.length,
               itemBuilder: (context, index) {
-                return Container(
-                  width: 215,
-                  height: 278,
-                  margin: EdgeInsets.only(
-                      right: defaultMargin,
-                      left: index == 0 ? defaultMargin : 0),
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(20),
-                    color: const Color(0xffECEDEF),
-                  ),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      SizedBox(
-                        height: defaultMargin,
-                      ),
-                      Image.network(
-                        listProductModel[index]
-                            .galeryModel!
-                            .galeryModel![0]
-                            .url!
-                            .toString(),
-                        width: 215,
-                        height: 150,
-                        fit: BoxFit.cover,
-                      ),
-                      Container(
-                        margin: const EdgeInsets.symmetric(horizontal: 20),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(
-                              listProductModel[index].categoryModel!.name!,
-                              style: secondaryTextStyle,
-                            ),
-                            const SizedBox(
-                              height: 6,
-                            ),
-                            Text(
-                              listProductModel[index].name!,
-                              style: blackTextStyle.copyWith(
-                                fontSize: 18,
-                                fontWeight: semiBold,
-                              ),
-                              overflow: TextOverflow.ellipsis,
-                              maxLines: 1,
-                            ),
-                            const SizedBox(
-                              height: 6,
-                            ),
-                            Text(
-                              "\$${listProductModel[index].price!.toString()}",
-                              style: priceTextStyle.copyWith(
-                                fontSize: 14,
-                                fontWeight: medium,
-                              ),
-                            ),
-                          ],
-                        ),
-                      )
-                    ],
-                  ),
+                return PopularProductCard(
+                  index: index,
+                  productModel: listProductModel[index],
                 );
               }),
         );

@@ -25,9 +25,9 @@ class BerandaPage extends StatelessWidget {
               return Container();
             },
           ),
-          PopularProductCard(category: category),
+          PopularProduct(category: category),
           const TitleSection(title: "New Arrivals"),
-          ArrivalProductCard(category: category),
+          ArrivalProduct(category: category),
         ],
       ),
     );
