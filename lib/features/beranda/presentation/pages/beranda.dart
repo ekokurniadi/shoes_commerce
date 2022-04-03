@@ -8,7 +8,7 @@ class BerandaPage extends StatelessWidget {
     int? category;
     BlocProvider.of<ProfileCubit>(context).getUserProfile();
     BlocProvider.of<ProductCubit>(context).initialStateProduct();
-    BlocProvider.of<PopularProductCubit>(context).getPopularProduct();
+    BlocProvider.of<PopularProductCubit>(context).initialStatePopularProduct();
 
     return Scaffold(
       backgroundColor: backgroundColor1,
@@ -17,18 +17,17 @@ class BerandaPage extends StatelessWidget {
           const HeaderBeranda(),
           const Categories(),
           const TitleSection(title: "Popular Product"),
-          const PopularProductCard(),
-          const TitleSection(title: "New Arrivals"),
           BlocBuilder<CategoryCubit, CategoryState>(
             builder: (context, state) {
               if (state is OnCategoriesChanges) {
                 category = state.category!;
               }
-              return ArrivalProductCard(
-                category: category,
-              );
+              return Container();
             },
-          )
+          ),
+          PopularProductCard(category: category),
+          const TitleSection(title: "New Arrivals"),
+          ArrivalProductCard(category: category),
         ],
       ),
     );

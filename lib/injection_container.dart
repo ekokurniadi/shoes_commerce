@@ -27,7 +27,7 @@ Future<void> initials() async {
 
   sl.registerFactory(() => ProfileCubit());
 
-  sl.registerLazySingleton(() => ProductCubit(getProductUsecase: sl()));
+  sl.registerFactory(() => ProductCubit(getProductUsecase: sl()));
 
   sl.registerFactory(() => PopularProductCubit(getPopularProductUsecase: sl()));
 

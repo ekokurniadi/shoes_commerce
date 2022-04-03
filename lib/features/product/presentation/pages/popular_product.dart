@@ -1,7 +1,8 @@
 part of '../../product.dart';
 
 class PopularProductCard extends StatelessWidget {
-  const PopularProductCard({Key? key}) : super(key: key);
+  final int? category;
+  const PopularProductCard({Key? key, this.category}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     List<ProductModel> listProductModel = [];
@@ -9,11 +10,19 @@ class PopularProductCard extends StatelessWidget {
     return BlocBuilder<PopularProductCubit, PopularProductState>(
       builder: (context, state) {
         if (state is PopularProductInitial) {
-          BlocProvider.of<PopularProductCubit>(context).getPopularProduct();
           return const PopularProductShimmer();
         } else if (state is OnPopularProductLoaded) {
+          listProductModel
+              .removeWhere((element) => element.categoryModel!.id != category);
           for (var element in state.productModel!.productModel!) {
             listProductModel.add(element);
+          }
+          if (listProductModel.isEmpty) {
+            return Container(
+              margin: const EdgeInsets.only(top: 14),
+              height: 78,
+              child: const EmptyProduct(),
+            );
           }
         } else if (state is OnPopularProductLoading) {
           return const PopularProductShimmer();

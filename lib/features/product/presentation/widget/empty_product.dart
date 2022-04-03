@@ -7,6 +7,7 @@ class EmptyProduct extends StatelessWidget {
   Widget build(BuildContext context) {
     return SizedBox(
       width: double.infinity,
+      height: 278,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         mainAxisAlignment: MainAxisAlignment.center,
@@ -15,37 +16,12 @@ class EmptyProduct extends StatelessWidget {
             height: 20,
           ),
           Text(
-            "Product not found",
+            "Sorry, we dont find any products for this category\nPlease try with a other category",
+            textAlign: TextAlign.center,
             style: secondaryTextStyle.copyWith(
               fontWeight: medium,
             ),
           ),
-          const SizedBox(
-            height: 20,
-          ),
-          SizedBox(
-            height: 44,
-            child: TextButton(
-              style: TextButton.styleFrom(
-                padding: const EdgeInsets.symmetric(
-                  horizontal: 24,
-                  vertical: 10,
-                ),
-                backgroundColor: primaryColor,
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(12),
-                ),
-              ),
-              onPressed: () {},
-              child: Text(
-                "Explore Store",
-                style: primaryTextStyle.copyWith(
-                  fontSize: 16,
-                  fontWeight: medium,
-                ),
-              ),
-            ),
-          )
         ],
       ),
     );

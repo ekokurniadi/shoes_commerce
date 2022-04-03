@@ -23,7 +23,6 @@ class ArrivalProductCard extends StatelessWidget {
 
     return BlocBuilder<ProductCubit, ProductState>(
       builder: (context, state) {
-        print(state);
         if (state is OnProductLoading) {
           isLoading = true;
         } else if (state is OnProductLoaded) {

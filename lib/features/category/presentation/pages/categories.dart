@@ -11,9 +11,14 @@ class Categories extends StatelessWidget {
       builder: (context, state) {
         if (state is OnCategoryLoaded) {
           listCategoryModel = state.listCategoryModel!.listCategoryModel!;
-          listCategoryModel!;
-          BlocProvider.of<ProductCubit>(context)
-              .getProduct(pages: 1, category: listCategoryModel![0].id);
+
+          BlocProvider.of<ProductCubit>(context).getProduct(
+            pages: 1,
+            category: listCategoryModel![0].id,
+          );
+          BlocProvider.of<PopularProductCubit>(context).getPopularProduct(
+            listCategoryModel![0].id,
+          );
         }
         return Container(
           margin: EdgeInsets.only(top: defaultMargin),
@@ -33,6 +38,10 @@ class Categories extends StatelessWidget {
                         category: listCategoryModel![index].id);
                     BlocProvider.of<ProductCubit>(context).getProduct(
                         pages: 1, category: listCategoryModel![index].id);
+                    BlocProvider.of<PopularProductCubit>(context)
+                        .getPopularProduct(
+                      listCategoryModel![index].id,
+                    );
                   },
                   child: CategoryItem(
                     index: index,

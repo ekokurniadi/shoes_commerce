@@ -9,14 +9,22 @@ class PopularProductCubit extends Cubit<PopularProductState> {
   final GetPopularProductUsecase getPopularProductUsecase;
   PopularProductCubit({required this.getPopularProductUsecase})
       : super(PopularProductInitial());
+  int? categories;
 
-  Future<void> getPopularProduct() async {
+  Future<void> getPopularProduct(int? category) async {
+    categories = category ?? categories;
+
     emit(OnPopularProductLoading());
-    final result = await getPopularProductUsecase.call(1);
+    final result = await getPopularProductUsecase.call(1, categories);
     result.fold((failures) {
       emit(OnPopularProductError(errorMessage: failures));
     }, (response) {
       emit(OnPopularProductLoaded(productModel: response));
     });
+  }
+
+  Future<void> initialStatePopularProduct({int? category}) async {
+    categories = category;
+    emit(PopularProductInitial());
   }
 }
