@@ -6,7 +6,7 @@ import '../../../../core/error/failures.dart';
 import '../../../../injection_container.dart';
 import '../../login.dart';
 
-import '../../../profile/data/models/user_model.dart';
+import '../../../user/data/models/user_model.dart';
 
 part 'login_state.dart';
 

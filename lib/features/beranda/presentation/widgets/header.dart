@@ -95,27 +95,30 @@ class HeaderBeranda extends StatelessWidget {
                   child: Container(
                     width: 54,
                     height: 54,
-                    decoration: const BoxDecoration(
-                      shape: BoxShape.circle,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(50),
                     ),
-                    child: CachedNetworkImage(
-                      imageUrl: state.userModel.profilePhotoUrl!,
-                      fit: BoxFit.fill,
-                      placeholder: (context, url) => Shimmer.fromColors(
-                        baseColor: secondaryTextColor,
-                        highlightColor: Colors.grey[300]!,
-                        period: const Duration(seconds: 2),
-                        child: Container(
-                          width: 54,
-                          height: 54,
-                          decoration: BoxDecoration(
-                            color: Colors.grey[400]!,
-                            shape: BoxShape.circle,
+                    child: ClipRRect(
+                      borderRadius: BorderRadius.circular(50),
+                      child: CachedNetworkImage(
+                        imageUrl: state.userModel.profilePhotoUrl!,
+                        fit: BoxFit.fill,
+                        placeholder: (context, url) => Shimmer.fromColors(
+                          baseColor: secondaryTextColor,
+                          highlightColor: Colors.grey[300]!,
+                          period: const Duration(seconds: 2),
+                          child: Container(
+                            width: 54,
+                            height: 54,
+                            decoration: BoxDecoration(
+                              color: Colors.grey[400]!,
+                              shape: BoxShape.circle,
+                            ),
                           ),
                         ),
+                        errorWidget: (context, url, error) =>
+                            const Icon(Icons.person, color: Colors.grey),
                       ),
-                      errorWidget: (context, url, error) =>
-                          const Icon(Icons.person, color: Colors.grey),
                     ),
                   ),
                 )

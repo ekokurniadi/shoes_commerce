@@ -6,7 +6,7 @@ import 'features/chat/chat.dart';
 import 'features/home/home.dart';
 import 'features/login/login.dart';
 import 'features/product/product.dart';
-import 'features/profile/presentation/cubit/profile_cubit.dart';
+import 'features/user/presentation/cubit/profile_cubit.dart';
 import 'features/signup/signup.dart';
 
 final sl = GetIt.instance;

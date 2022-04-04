@@ -8,7 +8,7 @@ import 'features/chat/presentation/cubit/chat_cubit.dart';
 import 'features/home/home.dart';
 import 'features/login/login.dart';
 import 'features/product/product.dart';
-import 'features/profile/presentation/cubit/profile_cubit.dart';
+import 'features/user/presentation/cubit/profile_cubit.dart';
 import 'features/signup/presentation/cubit/signup_cubit.dart';
 import 'injection_container.dart';
 import 'wrappers.dart';

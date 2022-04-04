@@ -7,7 +7,7 @@ import '../category/category.dart';
 import '../product/product.dart';
 import '../../core/core.dart';
 import '../login/login.dart';
-import '../profile/presentation/cubit/profile_cubit.dart';
+import '../user/presentation/cubit/profile_cubit.dart';
 
 part './presentation/pages/beranda.dart';
 part './presentation/widgets/header.dart';

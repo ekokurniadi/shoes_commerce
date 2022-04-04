@@ -1,7 +1,7 @@
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:shamo/core/error/failures.dart';
-import 'package:shamo/features/profile/data/models/user_model.dart';
+import 'package:shamo/features/user/data/models/user_model.dart';
 
 import '../../signup.dart';
 

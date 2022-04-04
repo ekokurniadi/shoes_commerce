@@ -100,6 +100,24 @@ class DetailChat extends StatelessWidget {
       );
     }
 
+    Widget content() {
+      return ListView(
+        padding: EdgeInsets.symmetric(horizontal: defaultMargin),
+        children: const [
+          ChatBubble(
+            text: "Hi, This item is still available?",
+            isSender: true,
+            hasProduct: true,
+          ),
+          ChatBubble(
+            text: "Good night, this item only available in size 42",
+            isSender: false,
+            hasProduct: false,
+          ),
+        ],
+      );
+    }
+
     return WillPopScope(
       onWillPop: () {
         BlocProvider.of<RouterCubit>(context).onHomePage();
@@ -107,6 +125,7 @@ class DetailChat extends StatelessWidget {
         return Future.value(false);
       },
       child: Scaffold(
+        body: content(),
         bottomNavigationBar: chatInput(),
         backgroundColor: backgroundColor3,
         appBar: PreferredSize(

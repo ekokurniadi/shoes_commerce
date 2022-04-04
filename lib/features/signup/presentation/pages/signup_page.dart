@@ -6,6 +6,7 @@ class SignUpPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    BlocProvider.of<ValidatorCubit>(context).resetValidator();
     TextEditingController _nameController = TextEditingController();
     TextEditingController _userNameController = TextEditingController();
     TextEditingController _emailController = TextEditingController();

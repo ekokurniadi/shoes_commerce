@@ -9,7 +9,7 @@ import 'presentation/cubit/signup_cubit.dart';
 import '../../core/core.dart';
 import '../../core/error/failures.dart';
 
-import '../profile/data/models/user_model.dart';
+import '../user/data/models/user_model.dart';
 export './presentation/cubit/signup_cubit.dart';
 
 part './data/repositories/signup_repositories_impl.dart';

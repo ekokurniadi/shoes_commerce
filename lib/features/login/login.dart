@@ -9,7 +9,7 @@ import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
 import '../../core/core.dart';
 import '../../core/error/failures.dart';
 import '../../injection_container.dart';
-import '../profile/data/models/user_model.dart';
+import '../user/data/models/user_model.dart';
 import 'presentation/cubit/login_cubit.dart';
 
 part './data/repositories/login_user_repositories_impl.dart';

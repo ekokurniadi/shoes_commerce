@@ -1,7 +1,7 @@
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:shamo/core/utility/shared_preferences_helper.dart';
-import 'package:shamo/features/profile/data/models/user_model.dart';
+import 'package:shamo/features/user/data/models/user_model.dart';
 import 'package:shamo/injection_container.dart';
 
 part 'profile_state.dart';
