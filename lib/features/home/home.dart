@@ -7,7 +7,6 @@ import '../beranda/beranda.dart';
 import '../cart/presentation/pages/cart.dart';
 import '../chat/chat.dart';
 import 'presentation/cubit/bottom_navigation_cubit.dart';
-import '../user/presentation/pages/profile.dart';
 
 export './presentation/cubit/bottom_navigation_cubit.dart';
 part './presentation/pages/home.dart';

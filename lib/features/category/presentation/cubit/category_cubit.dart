@@ -19,7 +19,6 @@ class CategoryCubit extends Cubit<CategoryState> {
     result.fold((failures) {
       emit(OnCategoryLoadedError(message: failures));
     }, (response) {
-      emit(CategoryInit(listCategoryModel: response));
       emit(OnCategoryLoaded(listCategoryModel: response));
     });
   }
