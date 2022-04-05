@@ -10,7 +10,8 @@ class HomePage extends StatelessWidget {
         padding: const EdgeInsets.only(bottom: 5),
         child: FloatingActionButton(
           onPressed: () {
-            BlocProvider.of<BottomNavigationCubit>(context).setIndex(4);
+            BlocProvider.of<BottomNavigationCubit>(context)
+                .setIndex(ConstantHelper.TO_CART_PAGE);
           },
           child: Image.asset(
             "assets/icon_cart.png",
@@ -49,8 +50,9 @@ class HomePage extends StatelessWidget {
                       child: Image.asset(
                         "assets/icon_home.png",
                         width: 21,
-                        color:
-                            state == 0 ? primaryColor : const Color(0xff808191),
+                        color: state == ConstantHelper.TO_HOME_PAGE
+                            ? primaryColor
+                            : const Color(0xff808191),
                       ),
                     ),
                   ),
@@ -64,8 +66,9 @@ class HomePage extends StatelessWidget {
                       child: Image.asset(
                         "assets/icon_chat.png",
                         width: 21,
-                        color:
-                            state == 1 ? primaryColor : const Color(0xff808191),
+                        color: state == ConstantHelper.TO_CHAT_PAGE
+                            ? primaryColor
+                            : const Color(0xff808191),
                       ),
                     ),
                   ),
@@ -79,8 +82,9 @@ class HomePage extends StatelessWidget {
                       child: Image.asset(
                         "assets/icon_wishlist.png",
                         width: 21,
-                        color:
-                            state == 2 ? primaryColor : const Color(0xff808191),
+                        color: state == ConstantHelper.TO_WISHLIST_PAGE
+                            ? primaryColor
+                            : const Color(0xff808191),
                       ),
                     ),
                   ),
@@ -93,8 +97,9 @@ class HomePage extends StatelessWidget {
                       child: Image.asset(
                         "assets/icon_profile.png",
                         width: 18,
-                        color:
-                            state == 3 ? primaryColor : const Color(0xff808191),
+                        color: state == ConstantHelper.TO_PROFILE_PAGE
+                            ? primaryColor
+                            : const Color(0xff808191),
                       ),
                     ),
                   ),
@@ -109,13 +114,13 @@ class HomePage extends StatelessWidget {
     Widget body() {
       return BlocBuilder<BottomNavigationCubit, int>(
         builder: (context, state) {
-          if (state == 0) {
+          if (state == ConstantHelper.TO_HOME_PAGE) {
             return const BerandaPage();
-          } else if (state == 1) {
+          } else if (state == ConstantHelper.TO_CHAT_PAGE) {
             return const ChatPage();
-          } else if (state == 2) {
+          } else if (state == ConstantHelper.TO_WISHLIST_PAGE) {
             return const WishListPage();
-          } else if (state == 3) {
+          } else if (state == ConstantHelper.TO_PROFILE_PAGE) {
             return const ProfilePage();
           } else {
             return const CartPage();

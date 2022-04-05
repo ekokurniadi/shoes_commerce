@@ -89,4 +89,17 @@ class SharedPreferencesHelper {
     _sharedPreferences.remove("token");
     return true;
   }
+
+  Future<void> setThemeToPreferences(String? theme) async {
+    final SharedPreferences _sharedPreferences =
+        await SharedPreferences.getInstance();
+    _sharedPreferences.setString("theme", theme!);
+  }
+
+  Future<String?> getThemeToPreferences() async {
+    final SharedPreferences _sharedPreferences =
+        await SharedPreferences.getInstance();
+    final theme = _sharedPreferences.getString("theme");
+    return theme;
+  }
 }

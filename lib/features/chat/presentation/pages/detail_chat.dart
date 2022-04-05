@@ -118,10 +118,15 @@ class DetailChat extends StatelessWidget {
       );
     }
 
+    void _backToPreviousPage() {
+      BlocProvider.of<RouterCubit>(context).onHomePage();
+      BlocProvider.of<BottomNavigationCubit>(context)
+          .setIndex(ConstantHelper.TO_CHAT_PAGE);
+    }
+
     return WillPopScope(
       onWillPop: () {
-        BlocProvider.of<RouterCubit>(context).onHomePage();
-        BlocProvider.of<BottomNavigationCubit>(context).setIndex(1);
+        _backToPreviousPage();
         return Future.value(false);
       },
       child: Scaffold(
@@ -139,9 +144,7 @@ class DetailChat extends StatelessWidget {
               children: [
                 IconButton(
                     onPressed: () {
-                      BlocProvider.of<RouterCubit>(context).onHomePage();
-                      BlocProvider.of<BottomNavigationCubit>(context)
-                          .setIndex(1);
+                      _backToPreviousPage();
                     },
                     icon: const Icon(Icons.arrow_back_ios)),
                 Image.asset(
