@@ -3,13 +3,14 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'core/core.dart';
 import 'features/category/category.dart';
-import 'features/chat/presentation/cubit/chat_cubit.dart';
 
+import 'features/chat/chat.dart';
 import 'features/home/home.dart';
 import 'features/login/login.dart';
 import 'features/product/product.dart';
-import 'features/user/presentation/cubit/profile_cubit.dart';
-import 'features/signup/presentation/cubit/signup_cubit.dart';
+
+import 'features/signup/signup.dart';
+import 'features/user/user.dart';
 import 'injection_container.dart';
 import 'wrappers.dart';
 

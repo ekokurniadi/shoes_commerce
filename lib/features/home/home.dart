@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import '../user/user.dart';
 import '../wishlist/wishlist.dart';
 
 import '../../core/core.dart';
