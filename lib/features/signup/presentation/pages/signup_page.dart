@@ -1,4 +1,3 @@
-// ignore_for_file: prefer_const_constructors
 part of '../../signup.dart';
 
 class SignUpPage extends StatelessWidget {
@@ -19,7 +18,7 @@ class SignUpPage extends StatelessWidget {
 
     Widget header() {
       return Container(
-        margin: EdgeInsets.only(top: 30),
+        margin: const EdgeInsets.only(top: 30),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -28,7 +27,7 @@ class SignUpPage extends StatelessWidget {
               style:
                   primaryTextStyle.copyWith(fontSize: 24, fontWeight: semiBold),
             ),
-            SizedBox(
+            const SizedBox(
               height: 2,
             ),
             Text(
@@ -42,7 +41,7 @@ class SignUpPage extends StatelessWidget {
 
     Widget nameInput() {
       return Container(
-        margin: EdgeInsets.only(top: 20),
+        margin: const EdgeInsets.only(top: 20),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -51,12 +50,12 @@ class SignUpPage extends StatelessWidget {
               style:
                   primaryTextStyle.copyWith(fontSize: 16, fontWeight: medium),
             ),
-            SizedBox(
+            const SizedBox(
               height: 12,
             ),
             Container(
               height: 50,
-              padding: EdgeInsets.symmetric(horizontal: 16),
+              padding: const EdgeInsets.symmetric(horizontal: 16),
               decoration: BoxDecoration(
                   color: backgroundColor2,
                   borderRadius: BorderRadius.circular(12)),
@@ -67,7 +66,7 @@ class SignUpPage extends StatelessWidget {
                       "assets/icon_name.png",
                       width: 17,
                     ),
-                    SizedBox(
+                    const SizedBox(
                       width: 16,
                     ),
                     Expanded(
@@ -115,7 +114,7 @@ class SignUpPage extends StatelessWidget {
 
     Widget userNameInput() {
       return Container(
-        margin: EdgeInsets.only(top: 20),
+        margin: const EdgeInsets.only(top: 20),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -124,12 +123,12 @@ class SignUpPage extends StatelessWidget {
               style:
                   primaryTextStyle.copyWith(fontSize: 16, fontWeight: medium),
             ),
-            SizedBox(
+            const SizedBox(
               height: 12,
             ),
             Container(
               height: 50,
-              padding: EdgeInsets.symmetric(horizontal: 16),
+              padding: const EdgeInsets.symmetric(horizontal: 16),
               decoration: BoxDecoration(
                   color: backgroundColor2,
                   borderRadius: BorderRadius.circular(12)),
@@ -140,7 +139,7 @@ class SignUpPage extends StatelessWidget {
                       "assets/icon_username.png",
                       width: 17,
                     ),
-                    SizedBox(
+                    const SizedBox(
                       width: 16,
                     ),
                     Expanded(
@@ -188,7 +187,7 @@ class SignUpPage extends StatelessWidget {
 
     Widget emailInput() {
       return Container(
-        margin: EdgeInsets.only(top: 20),
+        margin: const EdgeInsets.only(top: 20),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -197,12 +196,12 @@ class SignUpPage extends StatelessWidget {
               style:
                   primaryTextStyle.copyWith(fontSize: 16, fontWeight: medium),
             ),
-            SizedBox(
+            const SizedBox(
               height: 12,
             ),
             Container(
               height: 50,
-              padding: EdgeInsets.symmetric(horizontal: 16),
+              padding: const EdgeInsets.symmetric(horizontal: 16),
               decoration: BoxDecoration(
                   color: backgroundColor2,
                   borderRadius: BorderRadius.circular(12)),
@@ -213,7 +212,7 @@ class SignUpPage extends StatelessWidget {
                       "assets/icon_email.png",
                       width: 17,
                     ),
-                    SizedBox(
+                    const SizedBox(
                       width: 16,
                     ),
                     Expanded(
@@ -261,7 +260,7 @@ class SignUpPage extends StatelessWidget {
 
     Widget passwordInput() {
       return Container(
-        margin: EdgeInsets.only(top: 20),
+        margin: const EdgeInsets.only(top: 20),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -270,12 +269,12 @@ class SignUpPage extends StatelessWidget {
               style:
                   primaryTextStyle.copyWith(fontSize: 16, fontWeight: medium),
             ),
-            SizedBox(
+            const SizedBox(
               height: 12,
             ),
             Container(
               height: 50,
-              padding: EdgeInsets.symmetric(horizontal: 16),
+              padding: const EdgeInsets.symmetric(horizontal: 16),
               decoration: BoxDecoration(
                   color: backgroundColor2,
                   borderRadius: BorderRadius.circular(12)),
@@ -286,7 +285,7 @@ class SignUpPage extends StatelessWidget {
                       "assets/icon_password.png",
                       width: 17,
                     ),
-                    SizedBox(
+                    const SizedBox(
                       width: 16,
                     ),
                     Expanded(
@@ -413,7 +412,7 @@ class SignUpPage extends StatelessWidget {
 
     Widget footer() {
       return Container(
-        margin: EdgeInsets.only(bottom: 30),
+        margin: const EdgeInsets.only(bottom: 30),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
@@ -445,7 +444,7 @@ class SignUpPage extends StatelessWidget {
       isLoading = false;
       Future.microtask(() => sl<ToastHelper>()
           .toastSuccess(context, ConstantHelper.REGISTRASI_SUCCESS));
-      Future.delayed(Duration(seconds: 2), () {
+      Future.delayed(const Duration(seconds: 2), () {
         BlocProvider.of<RouterCubit>(context).onSignInPage();
       });
     }
