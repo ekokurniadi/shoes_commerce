@@ -1,8 +1,8 @@
 part of '../../chat.dart';
 
-class ChatItems extends StatelessWidget {
+class ChatCard extends StatelessWidget {
   final ChatModel? message;
-  const ChatItems({Key? key, this.message}) : super(key: key);
+  const ChatCard({Key? key, this.message}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

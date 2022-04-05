@@ -41,7 +41,7 @@ class ChatPage extends StatelessWidget {
               listChatModel.chatModels == null ||
                       listChatModel.chatModels!.isEmpty
                   ? const EmptyChat()
-                  : Chats(messages: listChatModel),
+                  : ChatList(messages: listChatModel),
             ],
           );
         },

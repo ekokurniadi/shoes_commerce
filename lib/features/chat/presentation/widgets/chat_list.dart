@@ -1,8 +1,8 @@
 part of '../../chat.dart';
 
-class Chats extends StatelessWidget {
+class ChatList extends StatelessWidget {
   final ListChatModel? messages;
-  const Chats({Key? key, this.messages}) : super(key: key);
+  const ChatList({Key? key, this.messages}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -17,7 +17,7 @@ class Chats extends StatelessWidget {
                 BlocProvider.of<RouterCubit>(context)
                     .onChatDetailPage(chatModel: messages!.chatModels![index]);
               },
-              child: ChatItems(
+              child: ChatCard(
                 message: messages!.chatModels![index],
               ),
             );
