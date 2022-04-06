@@ -291,19 +291,22 @@ class LoginPage extends StatelessWidget {
           resizeToAvoidBottomInset: false,
           backgroundColor: backgroundColor1,
           body: SafeArea(
-            child: Container(
-              margin: EdgeInsets.symmetric(horizontal: defaultMargin),
-              child: SingleChildScrollView(
-                  child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  header(),
-                  emailInput(),
-                  passwordInput(),
-                  signInButton(),
-                ],
-              )),
+            child: Hero(
+              tag: 'loginPage',
+              child: Container(
+                margin: EdgeInsets.symmetric(horizontal: defaultMargin),
+                child: SingleChildScrollView(
+                    child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    header(),
+                    emailInput(),
+                    passwordInput(),
+                    signInButton(),
+                  ],
+                )),
+              ),
             ),
           ),
           bottomNavigationBar: footer(),
