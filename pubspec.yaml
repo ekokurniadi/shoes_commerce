@@ -19,6 +19,7 @@ dependencies:
   flutter:
     sdk: flutter
   flutter_bloc: ^8.0.1
+  flutter_flipperkit: ^0.0.28
   flutter_native_splash: ^2.1.1
   flutter_spinkit: ^5.1.0
   get_it: ^7.2.0
