@@ -10,12 +10,18 @@ import 'core/utility/bloc_observer.dart';
 import 'injection_container.dart' as di;
 
 void main() async {
+  /// ENSURE WIDGETSBINDING IS INITIALIZED
   WidgetsBinding widgetsBinding = WidgetsFlutterBinding.ensureInitialized();
   FlutterNativeSplash.preserve(widgetsBinding: widgetsBinding);
+
+  /// DEPENDENCY INJECTION INITIAL
   await di.initials();
+
+  /// DIO INITIAL
   DioHelper.initDio(ConstantHelper.BASE_URL);
   DioHelper.setDioInterceptor(ConstantHelper.BASE_URL);
 
+  /// FLIPPER CLIENT
   if (!kReleaseMode) {
     FlipperClient flipperClient = FlipperClient.getDefault();
     flipperClient.addPlugin(FlipperNetworkPlugin());
@@ -23,6 +29,7 @@ void main() async {
     flipperClient.start();
   }
 
+  /// BLOC OBSERVER
   BlocOverrides.runZoned(
     () {
       runApp(const App());
