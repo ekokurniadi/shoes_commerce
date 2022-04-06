@@ -8,8 +8,8 @@ import 'features/login/login.dart';
 import 'features/signup/signup.dart';
 import 'features/splash_screen/splash_screen.dart';
 
-class Wrappers extends StatelessWidget {
-  const Wrappers({Key? key}) : super(key: key);
+class RouterModule extends StatelessWidget {
+  const RouterModule({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

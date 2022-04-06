@@ -11,4 +11,6 @@ class ConstantHelper {
   static const int TO_CART_PAGE = 4;
   static const String THEME_LIGHT = "light";
   static const String THEME_DARK = "dark";
+  static const String DATABASE_NAME = "shamo.db";
+  static const String ROOT_DIR = "shamo";
 }

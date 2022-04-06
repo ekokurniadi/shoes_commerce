@@ -12,10 +12,10 @@ import 'features/product/product.dart';
 import 'features/signup/signup.dart';
 import 'features/user/user.dart';
 import 'injection_container.dart';
-import 'wrappers.dart';
+import 'router_module.dart';
 
-class App extends StatelessWidget {
-  const App({Key? key}) : super(key: key);
+class Application extends StatelessWidget {
+  const Application({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -61,7 +61,7 @@ class App extends StatelessWidget {
             create: (_) => sl<PopularProductCubit>(),
           ),
         ],
-        child: const Wrappers(),
+        child: const RouterModule(),
       ),
     );
   }

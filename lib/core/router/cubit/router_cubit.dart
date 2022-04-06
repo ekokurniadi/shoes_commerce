@@ -1,5 +1,3 @@
-// ignore_for_file: prefer_const_constructors
-
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
@@ -19,11 +17,11 @@ class RouterCubit extends Cubit<RouterState> {
     emit(OnSplashPage());
     UserModel userModel = await _sharedPreferencesHelper.getUserPreferences();
     if (userModel.id == null) {
-      Future.delayed(Duration(seconds: 3), () {
+      Future.delayed(const Duration(seconds: 3), () {
         emit(OnSignInPage());
       });
     } else {
-      Future.delayed(Duration(seconds: 3), () {
+      Future.delayed(const Duration(seconds: 3), () {
         emit(OnHomePage());
       });
     }
