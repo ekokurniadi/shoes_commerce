@@ -1,7 +1,4 @@
 import 'package:get_it/get_it.dart';
-
-import 'package:sqflite/sqflite.dart';
-
 import 'core/core.dart';
 import 'features/category/category.dart';
 import 'features/chat/chat.dart';
@@ -15,9 +12,11 @@ final sl = GetIt.instance;
 
 Future<void> initials() async {
   // register sqflite database
-  Database databaseConnection = await DatabaseConnection.db.database;
 
-  sl.registerSingleton<Database>(databaseConnection);
+  DatabaseConnection databaseConnection =
+      DatabaseConnection(ConstantHelper.DATABASE_NAME, migrationList);
+
+  sl.registerSingleton<DatabaseConnection>(databaseConnection);
 
   // cubit
   sl.registerFactory(() => RouterCubit());

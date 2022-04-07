@@ -1,25 +1,34 @@
 // ignore_for_file: avoid_print
 
-import 'dart:io';
-
 import 'package:path/path.dart';
-import 'package:path_provider/path_provider.dart';
-import 'package:shamo/core/core.dart';
+import 'package:shamo/core/migrations/base/migration_base.dart';
 import 'package:sqflite/sqflite.dart';
 
 class DatabaseConnection {
+  final String dbName;
+  final List<MigrationBase> migrations;
+
   Database? _database;
-  static final DatabaseConnection db = DatabaseConnection._();
-  DatabaseConnection._();
+
+  DatabaseConnection(this.dbName, this.migrations);
 
   Future<Database> get database async {
     if (_database == null) {
-      Directory documentsDirectory = await getApplicationDocumentsDirectory();
-      final path = join(documentsDirectory.path, ConstantHelper.DATABASE_NAME);
-      return await openDatabase(
+      String databasePath = await getDatabasesPath();
+      String path = join(databasePath, dbName);
+
+      _database = await openDatabase(
         path,
-        version: 1,
-        onOpen: (db) {},
+        version: migrations.length,
+        onUpgrade: (Database db, int oldVersion, int newVersion) async {
+          print(oldVersion.toString() + ' to ' + newVersion.toString());
+          for (int i = oldVersion; i < newVersion; i++) {
+            print(
+              i.toString() + migrations[i].toString() + ' ON MIGRATION PROCESS',
+            );
+            await migrations[i].import(db);
+          }
+        },
       );
     }
 

@@ -18,6 +18,8 @@ part './data/models/list_category_model.dart';
 part './data/repositories/category_repositories_impl.dart';
 part './data/resources/category_remote_datasource.dart';
 part './data/resources/category_remote_datasource_impl.dart';
+part './data/resources/category_local_datasource.dart';
+part './data/resources/category_local_datasource_impl.dart';
 part './domain/entity/category_entity.dart';
 part './domain/usecases/get_categories_usecases.dart';
 part './domain/repositories/category_repositories.dart';

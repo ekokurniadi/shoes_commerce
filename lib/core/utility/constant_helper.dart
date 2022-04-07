@@ -12,5 +12,5 @@ class ConstantHelper {
   static const String THEME_LIGHT = "light";
   static const String THEME_DARK = "dark";
   static const String DATABASE_NAME = "shamo.db";
-  static const String ROOT_DIR = "shamo";
+  static const String DATABASE = "shamo";
 }

@@ -1,7 +1,6 @@
-import 'package:shamo/core/migrations/migration_files/migration_01.dart';
-
 import 'base/migration_base.dart';
+import 'migration_files/migration_03_category.dart';
 
 List<MigrationBase> migrationList = [
-  Migration01(),
+  Migration03Category(),
 ];
