@@ -2,6 +2,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter_flipperkit/flipper_client.dart';
 import 'package:flutter_flipperkit/plugins/network/flipper_network_plugin.dart';
 import 'package:flutter_flipperkit/plugins/sharedpreferences/flipper_shared_preferences_plugin.dart';
+import 'injection_container.dart';
 import 'package:sqflite/sqflite.dart';
 
 import 'core/core.dart';
@@ -22,9 +23,7 @@ class AppModule {
       flipperClient.start();
     }
 
-    database =
-        await DatabaseConnection(ConstantHelper.DATABASE_NAME, migrationList)
-            .database;
+    database = await sl<DatabaseConnection>().database;
     if (kDebugMode) {
       print("database => " + database.toString());
     }

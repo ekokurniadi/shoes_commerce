@@ -49,15 +49,12 @@ class Application extends StatelessWidget {
             create: (_) => sl<SignupCubit>(),
           ),
           BlocProvider(
-            lazy: false,
             create: (_) => sl<ProductCubit>(),
           ),
           BlocProvider(
-            lazy: false,
             create: (_) => sl<CategoryCubit>(),
           ),
           BlocProvider(
-            lazy: false,
             create: (_) => sl<PopularProductCubit>(),
           ),
         ],
